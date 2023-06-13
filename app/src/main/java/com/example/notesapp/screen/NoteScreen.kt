@@ -38,7 +38,7 @@ import com.example.notesapp.R
 import com.example.notesapp.components.NoteButton
 import com.example.notesapp.components.NoteInputText
 import com.example.notesapp.data.NoteDataSource
-import com.example.notesapp.model.Note as Note
+import com.example.notesapp.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -125,9 +125,7 @@ fun NoteScreen(
 
 @Composable
 fun NoteRow(
-    modifier: Modifier = Modifier,
-    note: Note,
-    onNoteClicked: (Note) -> Unit
+    modifier: Modifier = Modifier, note: Note, onNoteClicked: (Note) -> Unit
 ) {
     Surface(
         modifier
@@ -151,8 +149,7 @@ fun NoteRow(
                 text = note.noteContent, style = MaterialTheme.typography.labelMedium
             )
             Text(
-                text = "Tuesday, June 13",
-                style = MaterialTheme.typography.labelSmall
+                text = "${note.entryDate}", style = MaterialTheme.typography.labelSmall
             )
         }
 

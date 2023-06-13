@@ -16,7 +16,7 @@ import androidx.compose.ui.text.input.ImeAction
 
 @Composable
 fun NoteInputText(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     text: String,
     label: String,
     maxlines: Int = 2,

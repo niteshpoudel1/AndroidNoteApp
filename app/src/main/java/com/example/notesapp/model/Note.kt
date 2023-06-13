@@ -9,7 +9,7 @@ import java.util.UUID
 @Entity(tableName = "notes_table")
 data class Note(
     @PrimaryKey
-    val id: String = UUID.randomUUID().toString(),
+    val id: UUID = UUID.randomUUID(),
 
     @ColumnInfo(name = "note_title")
     val title: String,
@@ -17,6 +17,6 @@ data class Note(
     @ColumnInfo(name = "note_content")
     val noteContent: String,
 
-    @ColumnInfo(name = "entry_time")
-    val entryDate: String = "today"
+    @ColumnInfo(name = "entry_date")
+    val entryDate: String = "Today"
 )

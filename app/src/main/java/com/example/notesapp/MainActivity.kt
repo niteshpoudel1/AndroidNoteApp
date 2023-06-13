@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
 import com.example.notesapp.screen.NoteScreen
 import com.example.notesapp.screen.NoteView
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,9 +23,9 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun NotesApp(noteView: NoteView = viewModel()) {
+    fun NotesApp(noteView: NoteView) {
 
-        val notesList = noteView.getAllNotes()
+        val notesList = noteView.noteList.collectAsState().value
         Surface(color = MaterialTheme.colorScheme.background) {
             NoteScreen(
                 notes = notesList,
