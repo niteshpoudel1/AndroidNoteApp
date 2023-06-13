@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -70,14 +69,10 @@ fun NoteScreen(
                 )
             },
             navigationIcon = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Default.Edit, contentDescription = null)
-                }
+                Icon(imageVector = Icons.Default.Edit, contentDescription = null)
             },
             actions = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = null)
-                }
+                Icon(imageVector = Icons.Default.Notifications, contentDescription = null)
             },
         )
         Divider(color = Color.Black, thickness = 0.8.dp)
