@@ -27,7 +27,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -39,10 +38,9 @@ import com.example.notesapp.R
 import com.example.notesapp.components.NoteButton
 import com.example.notesapp.components.NoteInputText
 import com.example.notesapp.data.NoteDataSource
-import com.example.notesapp.model.Note
-import java.time.format.DateTimeFormatter
+import com.example.notesapp.model.Note as Note
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteScreen(
     notes: List<Note>,
@@ -115,10 +113,10 @@ fun NoteScreen(
         Divider(color = Color.Black, thickness = 0.8.dp)
         LazyColumn {
             items(notes) { note ->
-                NoteRow(note = note, onNoteClicked = {
+                NoteRow(note = note) {
                     Log.d("nitesh", "NoteScreen: Hello")
                     removeNote(note)
-                })
+                }
             }
         }
 
@@ -127,12 +125,14 @@ fun NoteScreen(
 
 @Composable
 fun NoteRow(
-    modifier: Modifier = Modifier, note: Note, onNoteClicked: (Note) -> Unit
+    modifier: Modifier = Modifier,
+    note: Note,
+    onNoteClicked: (Note) -> Unit
 ) {
     Surface(
         modifier
             .fillMaxWidth()
-            .clip(shape = RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))
+            .clip(shape = RoundedCornerShape(topEnd = 50.dp, bottomStart = 50.dp))
             .padding(5.dp),
         color = Color(0xFFDFE6EB)
     ) {
@@ -151,7 +151,7 @@ fun NoteRow(
                 text = note.noteContent, style = MaterialTheme.typography.labelMedium
             )
             Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+                text = "Tuesday, June 13",
                 style = MaterialTheme.typography.labelSmall
             )
         }

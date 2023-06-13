@@ -1,11 +1,22 @@
 package com.example.notesapp.model
 
-import java.time.LocalDateTime
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.UUID
 
+
+@Entity(tableName = "notes_table")
 data class Note(
-    val id:UUID = UUID.randomUUID(),
-    val title:String,
-    val noteContent:String,
-    val entryDate: LocalDateTime = LocalDateTime.now()
+    @PrimaryKey
+    val id: String = UUID.randomUUID().toString(),
+
+    @ColumnInfo(name = "note_title")
+    val title: String,
+
+    @ColumnInfo(name = "note_content")
+    val noteContent: String,
+
+    @ColumnInfo(name = "entry_time")
+    val entryDate: String = "today"
 )
