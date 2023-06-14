@@ -1,6 +1,7 @@
 package com.example.notesapp.screen
 
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -27,10 +29,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.notesapp.R
@@ -103,15 +109,14 @@ fun NoteScreen(
                                 title = title,
                                 noteContent = noteContent
                             )
-                        )
+                        )}
                         title = ""
                         noteContent = ""
-                        Toast.makeText(context, "Note Added", Toast.LENGTH_LONG).show()
-                    }
+                        Toast.makeText(context, "Note Added", Toast.LENGTH_SHORT).show()
                 },
             )
+            Divider(color = Color.Black, thickness = 0.8.dp)
         }
-        Divider(color = Color.Black, thickness = 0.8.dp)
         LazyColumn {
             items(notes) { note ->
                 NoteRow(note = note) {
@@ -127,12 +132,14 @@ fun NoteScreen(
 fun NoteRow(
     modifier: Modifier = Modifier, note: Note, onNoteClicked: (Note) -> Unit
 ) {
+    val colors = listOf(Color(0xFF000000), Color(0xFFFFFFFF))
     Surface(
         modifier
             .fillMaxWidth()
-            .clip(shape = RoundedCornerShape(topEnd = 50.dp, bottomStart = 50.dp))
+            .clip(shape = RectangleShape)
             .padding(5.dp),
-        color = Color(0xFFDFE6EB)
+        color = Color.Transparent,
+            border = BorderStroke(width = 0.5.dp, brush = Brush.verticalGradient(colors))
     ) {
         Column(
             modifier = Modifier
@@ -149,7 +156,9 @@ fun NoteRow(
                 text = note.noteContent, style = MaterialTheme.typography.labelMedium
             )
             Text(
-                text = "today", style = MaterialTheme.typography.labelSmall
+                text = "mon June 2",
+                style = MaterialTheme.typography.labelSmall,
+                modifier = Modifier.alpha(0.5f)
             )
         }
 
