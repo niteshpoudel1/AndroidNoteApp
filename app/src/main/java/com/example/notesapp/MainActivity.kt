@@ -34,6 +34,9 @@ class MainActivity : ComponentActivity() {
                 },
                 removeNote = {
                     noteView.removeNote(it)
+                },
+                updateNote = {
+                    noteView.updateNote(it)
                 }
             )
         }

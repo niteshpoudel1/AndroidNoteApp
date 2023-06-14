@@ -23,12 +23,12 @@ class NoteView @Inject constructor(private val repository: NoteRepository) : Vie
             Dispatchers.IO
         ) {
             repository.getAllNotes().distinctUntilChanged().collect { listOfNotes ->
-                    if (listOfNotes.isNotEmpty()) {
-                        Log.d("TAG", "Empty List")
-                    } else {
-                        _noteList.value = listOfNotes
-                    }
+                if (listOfNotes.isNotEmpty()) {
+                    Log.d("TAG", "Empty List")
+                } else {
+                    _noteList.value = listOfNotes
                 }
+            }
         }
     }
 

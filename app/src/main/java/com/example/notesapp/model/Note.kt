@@ -16,7 +16,4 @@ data class Note(
 
     @ColumnInfo(name = "note_content")
     val noteContent: String,
-
-    @ColumnInfo(name = "entry_date")
-    val entryDate: String = "Today"
 )

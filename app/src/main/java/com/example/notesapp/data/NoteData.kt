@@ -26,11 +26,7 @@ class NoteDataSource {
             ),
             Note(
                 title = "Diary",
-                noteContent = "Dear Diary, had a really fun day with my friends after school. We went to the mall and tried on different outfits, took silly pictures, and had a lot of laughs. It's great to have such amazing friends.\n" +
-                        "\n" +
-                        "Dear Diary, today was a tough day. I had a big test in math class, and I'm not sure if I did well. I studied really hard, but some of the questions were really challenging. I hope I at least passed.\n" +
-                        "\n" +
-                        "Dear Diary, I'm feeling really frustrated with my parents. They don't seem to understand me and are always nagging about my grades and chores. I just wish they would give me some space and trust me more."
+                noteContent = "Dear Diary, had a really fun day with my friends after school. We went to the mall and tried on different outfits, took silly pictures, and had a lot of laughs. It's great to have such amazing friends. Dear Diary, today was a tough day. I had a big test in math class, and I'm not sure if I did well. I studied really hard, but some of the questions were really challenging. I hope I at least passed."
             ),
             Note(
                 title = "Facts about Nepal",
